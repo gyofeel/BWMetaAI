@@ -1,5 +1,8 @@
 use_build_vs(Protoss, Terran)
-build_weight(.25)
+if enemyowns(Nexus):
+    build_weight(.25)
+if enemyowns(Command Center):
+    build_weight({lv.w_2gate_dt})
 
 defenseclear()
 8 Protoss Pylon
@@ -19,5 +22,7 @@ build_start(3, Protoss Pylon)
 wait_build(1, Protoss Templar Archives)
 attack_train(2, Dark Templar)
 wait_force(2, Dark Templar)
+if enemyowns(Command Center):
+    wait_rand(0, {lv.jitter_max})
 attack_simple()
 expand(1, expansion)

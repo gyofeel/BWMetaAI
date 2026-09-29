@@ -1,4 +1,5 @@
 use_build_vs(Terran)
+build_weight({lv.w_10_15_goons})
 8 Pylon
 10 Gateway
 11 Assimilator
@@ -18,6 +19,7 @@ build_start(19, Probe)
 build_start(20, Probe)
 attack_train(5, Dragoon)
 wait_force(5, Dragoon)
+wait_rand(0, {lv.jitter_max})
 attack_async()
 
 if random(128):

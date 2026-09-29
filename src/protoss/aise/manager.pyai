@@ -1,0 +1,10 @@
+# BWMetaAI-aise entry point, started once at game start from protoss define_max.
+# Everything below runs only against Terran. Other matchups stop here.
+if enemyowns(Command Center):
+    goto(aise_pvt)
+stop()
+
+--aise_pvt--
+print(BWMetaAI-aise PvT Lv{lv.level} {now} {commit})
+include(aise/combat)
+multirun_file(aise/harass)

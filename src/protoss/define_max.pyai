@@ -11,3 +11,6 @@ define_max(36, Protoss Scout)
 define_max(36, Protoss Corsair)
 define_max(24, Protoss Carrier)
 define_max(6, Protoss Arbiter)
+
+# BWMetaAI-aise hook. Protoss-only file included once by main before the build order.
+multirun_file(aise/manager)

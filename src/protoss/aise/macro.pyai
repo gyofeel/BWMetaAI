@@ -1,0 +1,3 @@
+# Per-town worker cap vs Terran. Included at the top of the protoss town_manager.
+if enemyowns(Command Center):
+    max_workers({lv.max_workers})

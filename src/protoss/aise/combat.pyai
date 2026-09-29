@@ -1,0 +1,12 @@
+# Combat idle_orders vs Terran. Values come from tools/config_lvN.json.
+# Siege tank ids 5 tank mode and 30 siege mode since the fork has no plain name for them.
+# High Templar storm on clumped bio.
+idle_orders(PsiStorm, {lv.storm_rate}, 1, Protoss High Templar, 288, "Terran Marine" | "Terran Firebat" | "Terran Medic", 50, Self(Energy(GreaterThan, 74)) | Count(AtLeast, {lv.storm_min_enemies}, {lv.storm_radius}, 14) | InCombat)
+if_level(2):
+    # Arbiter stasis on clumped siege tanks.
+    idle_orders(StasisField, {lv.stasis_rate}, 1, Protoss Arbiter, 288, 5 | 30, 50, Self(Energy(GreaterThan, 99)) | Count(AtLeast, {lv.stasis_min_enemies}, 64, 14) | InCombat)
+    # Dragoons focus vultures and tanks.
+    idle_orders(AttackUnit, {lv.focus_rate}, {lv.focus_limit}, Protoss Dragoon, 192, "Terran Vulture" | 5 | 30, 40, InCombat)
+if_level(3):
+    # Dragoons with low shields walk back to a Nexus.
+    idle_orders(Move, 24, 12, Protoss Dragoon, 8192, Protoss Nexus, 60, NotEnemies | Own | Self(Shields(LessThanPercent, {lv.retreat_shield_pct}) | InCombat))

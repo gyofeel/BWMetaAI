@@ -1,0 +1,14 @@
+# Dark Templar raids on SCVs vs Terran. Started by aise/manager.
+# The area covers the whole map so the raid finds SCVs on any map.
+wait_owned(Templar Archives)
+train(2, Dark Templar)
+ai_order(AttackUnit, 2, Protoss Dark Templar, (4096, 4096) ~ 8192, (4096, 4096) ~ 8192, Terran SCV, Enemies | SingleUnit)
+if_level(2):
+    wait({lv.harass_wait})
+    train(2, Dark Templar)
+    ai_order(AttackUnit, 2, Protoss Dark Templar, (4096, 4096) ~ 8192, (4096, 4096) ~ 8192, Terran SCV, Enemies | SingleUnit)
+if_level(3):
+    loop:
+        wait({lv.harass_wait})
+        train(2, Dark Templar)
+        ai_order(AttackUnit, 2, Protoss Dark Templar, (4096, 4096) ~ 8192, (4096, 4096) ~ 8192, Terran SCV, Enemies | SingleUnit)

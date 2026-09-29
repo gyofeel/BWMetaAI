@@ -73,3 +73,27 @@ clean:
 	@rm -f build/*.pyai
 	@rm -f build/*.trg
 	@rm -f build/*.scx
+
+PYMS = ../pyms-aise
+PYMS_PY = $(PYMS)/.venv/bin/python
+
+.PHONY: aise check
+
+aise: lv1 lv2 lv3
+
+lv%:
+	@echo Building aise level $*
+	@mkdir -p build/lv$*
+	@cp tools/config_lv$*.json tools/config.json
+	@for race in terran zerg protoss; do python3 tools/build_ai.py $$race build/lv$*/$$race.pyai || { rm tools/config.json; exit 1; }; done
+	@rm tools/config.json
+	@cat build/lv$*/terran.pyai build/lv$*/zerg.pyai build/lv$*/protoss.pyai src/ums-scripts.pyai > build/lv$*/combined.pyai
+	@python3 tools/pyms_compat.py build/lv$*/combined.pyai build/lv$*/pyms.pyai
+	@PYTHONPATH=$(PYMS) $(PYMS_PY) tools/pyms_compile.py build/lv$*/pyms.pyai build/lv$*/aiscript.bin build/lv$*/bwscript.bin
+	@$(PYMS_PY) $(PYMS)/PyAI.pyw --decompile build/lv$*/aiscript.bin build/lv$*/bwscript.bin build/lv$*/decompiled.txt > /dev/null
+	@wc -c < build/lv$*/aiscript.bin
+
+check: aise
+	@python3 -m unittest discover -s tools -p 'test_*.py'
+	@sh tools/check_tz_unchanged.sh
+	@python3 tools/check_levels.py

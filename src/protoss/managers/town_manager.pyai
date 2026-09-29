@@ -1,3 +1,4 @@
+include(aise/macro)
 build_finish(1, Nexus, 50)
 build_finish(1, Probe, 50)
 build_finish(1, Pylon, 50)

@@ -1,6 +1,10 @@
 # Make sure the natural has been taken by this point
 expand(1, expansion)
 
+if_level(2):
+    if enemyowns(Command Center):
+        goto(aise_expansion_pvt)
+
 loop:
     --expansion-timing-manager-loop--
     panic(expansion)
@@ -20,3 +24,11 @@ loop:
     if random(128):
         expand(99, expansion)
         goto(expansion-timing-manager-loop)
+
+if_level(2):
+    --aise_expansion_pvt--
+    loop:
+        panic(expansion)
+        wait_rand({lv.expand_wait_min}, {lv.expand_wait_max})
+        if random({lv.expand_chance}):
+            expand(99, expansion)

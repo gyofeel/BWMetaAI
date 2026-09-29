@@ -1,0 +1,41 @@
+{
+    "srcPath": "src/",
+    "verbosity": 0,
+    "bonusWorkers": 0,
+    "difficulty": 0,
+    "terran": {
+        "verbosity": 0,
+        "useBuild": ""
+    },
+    "zerg": {
+        "verbosity": 0,
+        "useBuild": ""
+    },
+    "protoss": {
+        "verbosity": 0,
+        "useBuild": ""
+    },
+    "aise": {
+        "level": 1,
+        "storm_rate": 96,
+        "storm_min_enemies": 8,
+        "storm_radius": 48,
+        "stasis_rate": 48,
+        "stasis_min_enemies": 3,
+        "focus_rate": 24,
+        "focus_limit": 3,
+        "retreat_shield_pct": 20,
+        "max_workers": 22,
+        "expand_wait_min": 1800,
+        "expand_wait_max": 2500,
+        "expand_chance": 96,
+        "jitter_max": 240,
+        "w_1gate_goon": 1.0,
+        "w_10_15_goons": 0.25,
+        "w_12nexus": 1.0,
+        "w_2base_carrier": 0.25,
+        "w_range_expand": 1.0,
+        "w_2gate_dt": 0.0,
+        "harass_wait": 7200
+    }
+}

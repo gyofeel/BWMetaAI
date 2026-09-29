@@ -8,6 +8,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import abbrevs
 import macros
 import buildConverter
+import levels
 
 debug_count = 0
 block_count = 0
@@ -74,7 +75,9 @@ class Race:
         
         with open(filename, 'r', encoding='utf-8') as f:
             content = f.read()
-        
+
+        content = levels.apply(content, self.config.get('aise'))
+
         # Replace repeat()
         content = re.sub(r'repeat\(\)', f'wait(75)\ngoto({file_block})', content)
         

@@ -1,4 +1,6 @@
 use_build_vs(Terran, Protoss)
+if enemyowns(Command Center):
+    build_weight({lv.w_12nexus})
 build_start(8, Probe, 150)
 build_start(1, Pylon)
 build_start(12, Probe, 150)
